@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>${siteInfo.title}</title>
+<link rel="stylesheet" href="${ctx}/static/css/style_3.css">
+</head>
+<body>
+	<div class="container">
+		<div class="title">
+			<h1>${siteInfo.title}</h1>
+		</div>
+		<div class="publish-time">
+			<span>${siteInfo.releaseTime?string('yyyy-MM-dd')}</span>
+		</div>
+		<div class="article">
+			${siteInfo.content}
+			<div class="article-source">
+				<span>文章来源：${siteInfo.source}</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

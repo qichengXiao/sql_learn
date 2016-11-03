@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广东科技 - <#if channel=='tong_zhi_gong_gao'>看通知
+		<#elseif channel=='zheng_ce_jie_du'>懂政策
+		<#elseif channel=='zheng_wu_dong_tai'>知动态</#if>
+	</title>
+	<link rel="stylesheet" href="${ctx}/static/css/style_3.css">
+</head>
+<body>
+	<div class="container inner">
+		<div class="catalog lists">
+			<#if channel=='tong_zhi_gong_gao'>
+			<img class="page-type" src="${ctx}/static/images/announce.jpg" alt="">
+			<#elseif channel=='zheng_ce_jie_du'>
+			<img class="page-type" src="${ctx}/static/images/policy.jpg" alt="">
+			<#elseif channel=='zheng_wu_dong_tai'>
+			<img class="page-type" src="${ctx}/static/images/dynamic.jpg" alt="">
+			</#if>
+		
+			<#list newsList as news>
+				<a href="${ctx}/news/info/${news.channel}/${news.id}" class="item">
+				  <span class="title-circle">·</span>
+					<p class="policy-title">
+						${news.title}
+					</p>
+				</a>
+			</#list>
+		</div>
+	</div>
+	<input id="channel" value="${channel}" type="hidden"> 
+	<!--下页的页码  -->
+	<input id="pageid" value="${pageid}" type="hidden">	
+	<script src="${ctx}/static/js/zepto.min.js"></script>
+	<script src="${ctx}/static/js/dropload.min.js"></script>
+	<script src="${ctx}/static/js/style_3.js"></script>
+</body>
+</html>

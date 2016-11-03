@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>首页 - 广东科技微信公众号管理后台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<#include "/common/common_css.html">
+</head>
+
+<body>
+	<div class="navbar navbar-default" id="navbar">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('navbar', 'fixed')
+			} catch (e) {
+			}
+		</script>
+
+		<div class="navbar-container" id="navbar-container">
+			<!-- /.navbar-header -->
+
+			<div class="navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<li class="light-blue"><a data-toggle="dropdown" href="#"
+						class="dropdown-toggle"> <!-- <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" /> -->
+							<span class="user-info"> <small>你好,</small>
+								${admin.user_name}
+						</span> <i class="icon-caret-down"></i>
+					</a>
+
+						<ul
+							class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li><a href="${ctx}/portal/logout"> 注销 </a></li>
+						</ul></li>
+				</ul>
+				<!-- /.ace-nav -->
+			</div>
+			<!-- /.navbar-header -->
+		</div>
+		<!-- /.container -->
+	</div>
+
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
+		</script>
+
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#"> <span
+				class="menu-text"></span>
+			</a>
+
+			<div class="sidebar" id="sidebar">
+				<script type="text/javascript">
+					try {
+						ace.settings.check('sidebar', 'fixed')
+					} catch (e) {
+					}
+				</script>
+		
+				<ul class="nav nav-list" id="navlist">
+					
+					<li><a href="${ctx}/portal/menu/show_menu_list"
+						target="iframe_content"> <span class="menu-text">
+								菜单管理</span>
+					</a></li>
+				
+					<li><a href="${ctx}/portal/item/getItem"
+						target="iframe_content"> <span class="menu-text">
+								协议管理</span>
+					</a></li>
+					
+					<li><a href="${ctx}/portal/homeUrl/show_home_url_list?pageid=0"
+						target="iframe_content"> <span class="menu-text">
+								首页链接配置</span>
+					</a></li>
+			<#if admin.user_type=='A'>
+					<li><a href="${ctx}/portal/user/show_user_list"
+						target="iframe_content"> <span class="menu-text">
+								管理员账号管理</span>
+					</a></li>
+			</#if>	
+					<li><a href="${ctx}/portal/customer/show_customer_list?pageid=0"
+						target="iframe_content"> <span class="menu-text">
+								用户管理 </span>
+					</a></li>
+					
+					<li><a href="${ctx}/portal/commentlist?pageid=0"
+						target="iframe_content"> <span class="menu-text">
+								评论管理</span>
+					</a></li>
+					
+					<li><a href="${ctx}/portal/hudong/questionlist?pageid=0"
+						target="iframe_content"> <span class="menu-text">
+								微互动栏目</span>
+					</a></li>
+					<li><a href="${ctx}/replay/list?pageid=0"
+						target="iframe_content"> <span class="menu-text">
+								自动回复管理</span>
+					</a></li>
+				</ul>
+			
+				<!-- /.nav-list -->
+
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left"
+						data-icon1="icon-double-angle-left"
+						data-icon2="icon-double-angle-right"></i>
+				</div>
+
+				<script type="text/javascript">
+					try {
+						ace.settings.check('sidebar', 'collapsed')
+					} catch (e) {
+					}
+				</script>
+			</div>
+
+			<div class="main-content">
+				<iframe width="100%" height="100%" frameborder="0" scrolling="auto"
+					style="margin: 0px; padding: 0px;" src="${ctx}/portal/home"
+					id="iframe_content" name="iframe_content"></iframe>
+			</div>
+			<!-- /.main-content -->
+
+		</div>
+		<!-- /.main-container-inner -->
+
+	</div>
+	<!-- /.main-container -->
+
+	<#include "/common/common_js.html">
+
+	<!-- inline scripts related to this page -->
+	<script type="text/javascript">
+		$(function() {
+			var height = $(document).height() - 60;
+			//$(".main-content").height(height + 'px');
+			$("#iframe_content").height(height + 'px');
+			$("#navlist li a").click(function() {
+				$("#navlist li").removeClass("active");
+				$(this).parent().addClass("active");
+			});
+		});
+	</script>
+</body>
+</html>

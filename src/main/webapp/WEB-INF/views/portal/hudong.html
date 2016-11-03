@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="decorator" content="default" />
+<title>互动问题列表</title>
+</head>
+
+<body>
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				互动问题管理
+			</h1>
+		</div>
+		<!-- /.page-header -->
+
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+				<form class="form-inline" action="${ctx}/portal/hudong/searchSiteInfo"
+					method="post">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12">
+							<div class="input-group">
+								<button class="btn btn-sm btn-purple" data-toggle="modal"
+									data-target="#siteInfo-add-modal">
+									<i class="icon-edit bigger-120"></i>添加问题
+								</button>
+								问题：<input name="question" value="${siteInfo.title}"
+									type="text" class="input-small" /> 
+								答案：<input name="answer" value="${siteInfo.content}"
+									type="text" class="input-small" /> 
+									&nbsp;
+								<button type="submit" class="btn btn-purple btn-sm">
+									查询 <i class="icon-search icon-on-right bigger-110"></i>
+								</button><br>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="table-responsive" style="margin-top: 5px">
+							<table id="sample-table-1"
+								class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<!-- <th class="center"><label> <input type="checkbox"
+												class="ace" /> <span class="lbl"></span>
+										</label></th> -->
+										<th style="text-align:center;width:100px;">&nbsp;&nbsp;&nbsp;问&nbsp;题&nbsp;&nbsp;&nbsp;</th>
+										<th style="text-align:center;">回&nbsp;答</th>
+										<th style="width:150px;"></th>	
+									</tr>
+								</thead>
+
+								<tbody>
+									 <#list siteInfoList as siteInfo> 
+									<tr>
+										<!-- <td class="center"><label> <input type="checkbox"
+												class="ace" /> <span class="lbl"></span>
+										</label></td> -->
+										<td>${siteInfo.title}</td>
+										<td>${siteInfo.content}</td>
+										
+										<td>
+											<div
+												class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+												<button class="btn btn-sm btn-purple" data-rel="tooltip"
+													onclick="editSiteInfo('${siteInfo.id}')" >
+													<span> <i class="icon-edit bigger-120"></i>编辑
+													</span>
+												</button>
+												<button class="btn btn-sm btn-danger"
+													onclick="deleteSiteInfo('${siteInfo.id}')"
+													data-rel="tooltip">
+													<span> <i class="icon-trash bigger-120"></i>删除
+													</span>
+												</button>
+											</div>
+										</td>
+									</tr>
+								 </#list>
+								</tbody>
+							</table>
+						</div>
+						<#include "/common/common_page.html">
+						<!-- /.table-responsive -->
+					</div>
+					<!-- /span -->
+				</div>
+				<!-- /row -->
+
+				<!-- PAGE CONTENT ENDS -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.page-content -->
+
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-sm btn-inverse"> <i
+		class="icon-double-angle-up icon-only bigger-110"></i>
+	</a>
+
+
+<div id="siteInfo-add-modal" class="modal fade" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="blue bigger">添加问题</h4>
+				</div>
+							
+		 		<div class="modal-body overflow-visible">
+					<form id="siteInfo-add-form" class="form-horizontal"
+						role="form" method="post" 
+						enctype="multipart/form-data">
+				<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">
+						</div>
+						<div class="space-4"></div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">
+								问题： </label>
+							<div class="col-sm-8">
+								<input type="text" name="newSiteInfoTitle" maxlength="50" 
+									class="col-xs-10 col-sm-5" required />
+							</div>
+						</div>
+						<div class="space-4"></div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">
+								回答： </label>
+							<div class="col-sm-8">
+								<textarea  name="newSiteInfoContent" rows="12"	cols="46" 
+							style="margin: 0px; height: 414px; width: 413px;"	required></textarea>
+							</div>
+						</div> 
+						<div class="modal-footer">
+							<button class="btn btn-sm btn-info" 
+								onclick="addNewSiteInfo()">
+								<i class="icon-ok"></i> 提交
+							</button>
+							<button class="btn btn-sm" data-dismiss="modal">
+								<i class="icon-remove"></i> 取消
+							</button>
+						</div>
+					</from>		
+			</div>
+					
+		</div>
+	</div>
+</div>
+
+<div id="siteInfo-change-modal" class="modal fade" tabindex="-1"
+		role ="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="blue bigger">编辑问题</h4>
+				</div>
+				<!--对比add，执行步骤等去哪了-->
+	  			<div class="modal-body overflow-visible">
+					<form id="siteInfo-change-form" class="form-horizontal"
+						role="form" method="post"
+						enctype="multipart/form-data">
+						
+						
+						<input type="hidden" id="updateId" name="updateId" value="0">
+							<label class="col-sm-3 control-label no-padding-right">
+								问题 </label>
+								<input id="siteInfoTital" type="text" name="updateSiteInfoTital" 
+									maxlength="50" class="col-xs-10 col-sm-7" required /><br/><br/>
+							<label class="col-sm-3 control-label no-padding-right">
+								回答 </label>
+								<textarea id="siteInfoContent" name="updateSiteInfoContent" rows="12"	cols="46" 
+							style="margin: 0px; width: 568px; height: 355px;"	required></textarea>
+								<br/><br/>
+						<div class="modal-footer">
+							<button class="btn btn-sm btn-info"
+								onclick="updateSiteInfo()" >
+							<i class="icon-ok"></i> 保存
+							</button>
+							<button class="btn btn-sm" data-dismiss="modal">
+								<i class="icon-remove"></i> 取消
+							</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- inline scripts related to this page -->
+	<script charset="utf-8"
+		src="${ctx}/static/kindeditor/kindeditor-min.js"></script>
+	<script charset="utf-8" src="${ctx}/static/kindeditor/zh_CN.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$.messager.model = {
+			ok : {
+				text : "确定",
+				classed : 'btn-info'
+			},
+			cancel : {
+				text : "取消",
+				classed : 'btn-error'
+			}
+		};
+	});
+	
+	function updateSiteInfo(){
+		$("#siteInfo-change-form").validate();
+		var formData = new FormData($("#siteInfo-add-form")[0]); 
+				$.ajax({  
+			     	url : "${ctx}/portal/hudong/updateSiteInfo",  
+			     	type : "POST",  
+		        	data: formData,  
+				 	async: true,  	//异步请求
+					cache: false,  	//设置为false将不会从浏览器缓存中加载请求信息
+					contentType: false, 
+					processData: false, 
+		        	 success : function(data) {  
+			    	 	var json = eval(data);
+			          	if(json.code == 0){
+			        	  	alert("操作失败，请重试");
+			          	}  
+			          	if(json.code == 1){
+			        	  	alert("保存成功！");
+			        	  	window.location.reload();
+			          	}
+			     	},  
+			     	error : function() { 
+			    	 	alert("连接错误，请检查网络！");
+			    	 }  
+				}); 
+	}
+	
+	function addNewSiteInfo(){
+		$("#siteInfo-add-form").validate();
+		$("#siteInfo-add-form").bind(
+				'submit',
+				function() {
+					//校验表单
+					if (!$(this).valid()) {
+						return false;
+					}
+					var formData = new FormData($("#siteInfo-add-form")[0]); 
+				    $.ajax({  
+				          url: "${ctx}/portal/hudong/addNewSiteInfo" ,  
+				          type: "POST",  
+				          data: formData,  
+				          async: false,  	//同步请求
+				          cache: false,  	//设置为false将不会从浏览器缓存中加载请求信息
+				          contentType: false, 
+				          processData: false,  
+				          success:function(data){   
+					    	  var json = eval(data);
+					    	  if(json.code == 0) {
+					        		alert("添加失败");
+					        	} 
+					    	  if(json.code == 1){
+					    		  window.location.reload();
+					    	  }
+				          },  
+				          error: function () {  
+				              alert("连接错误，请检查网络！");  
+				          }  
+				     });  
+					return false;
+				});
+	}
+		function deleteSiteInfo(id) {
+			$.messager.confirm("删除", "确定要删除该问题吗？ ", function() {
+				 $.ajax({
+				        type:"GET", //请求方式
+				        url:"${ctx}/portal/hudong/deleteSiteInfo?id=" + id,//请求路径
+				        data:id,
+				        cache: false, 
+				      success:function(data){   
+				    	  var json = eval(data);
+				    	  if(json.code == 0) {
+				        		alert("操作失败，请重新尝试");
+				        	}
+				    	  if(json.code == 1){
+				    		  alert("操作成功！");
+				    		  $.messager.confirm("删除", "操作成功 ");
+				    		  location.reload();
+				    	  }
+				       },
+				      error: function(){
+				          alert("连接失败，请检查网络!");
+				      }
+				      });
+			});
+		}
+		function editSiteInfo(id) {
+			$.ajax({
+		        type:"GET", //请求方式
+		        url:"${ctx}/portal/hudong/getSiteInfo?id=" + id,//请求路径
+		        data:id,
+		        async: false,
+		        cache: false, 
+		        dataType: 'json',
+		      	success:function(data){   
+		    	  	var json = eval(data);
+		    	  	if(json.code == 0) {
+		        		alert("操作失败");
+		        	}
+		    	  	if(json.flag == 1){
+		    			
+		    	 	}
+		    	  	$('#siteInfoTital').val(json.tital);
+		    	 	$('#updateId').val(json.id);
+		    	  	$('#siteInfoContent').val(json.content);
+		    	 	$('#siteInfo-change-modal').modal('show'); 
+		        },
+		      error: function(){
+		          alert("连接失败，请检查网络！");
+		      }
+		      });
+		}
+	</script>
+
+</body>
+</html>

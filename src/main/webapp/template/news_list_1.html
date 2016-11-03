@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title><#if channel=='tong_zhi_gong_gao'>看通知
+		<#elseif channel=='zheng_ce_jie_du'>懂政策
+		<#elseif channel=='zheng_wu_dong_tai'>知动态</#if>
+</title>
+<link rel="stylesheet" href="${ctx}/static/css/style.css">
+</head>
+<body>
+	<div class="foot-navbar">
+		<a href="${ctx}/news/channel/tong_zhi_gong_gao" id="tzgg"
+			class="<#if channel=='tong_zhi_gong_gao'>foot-active</#if>">看通知
+		</a>
+		<span>|</span> 
+		<a href="${ctx}/news/channel/zheng_wu_dong_tai" id="zwdt"
+			class="<#if channel=='zheng_wu_dong_tai'>foot-active</#if>">知动态
+		</a>
+		<span>|</span>
+		<a href="${ctx}/news/channel/zheng_ce_jie_du" id="zcjd"
+			class="<#if channel=='zheng_ce_jie_du'>foot-active</#if>">懂政策
+		</a> 
+	</div>
+	<div class="container inner">
+		<div class="catalog lists">
+			<#list newsList as news>
+				<a href="${ctx}/news/info/${news.channel}/${news.id}" class="item">
+					<p class="policy-title">
+						<span class="title-circle">·</span>${news.title}
+					</p>
+					<p class="policy-message">
+						<span>${news.releaseTime?string('yyyy-MM-dd')}</span>&nbsp;&nbsp;来源:<span>${news.source}</span>
+					</p>
+					<span href="#" class="select-button">
+						>
+					</span>
+				</a>
+			</#list>
+		</div>
+	</div>
+	<input id="channel" value="${channel}" type="hidden"> 
+	<!--下页的页码  -->
+	<input id="pageid" value="${pageid}" type="hidden">
+	<script src="${ctx}/static/js/zepto.min.js"></script>
+	<script src="${ctx}/static/js/dropload.min.js"></script>
+	<script src="${ctx}/static/js/style.js"></script>
+</body>
+</html>

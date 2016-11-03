@@ -1,0 +1,146 @@
+body {
+	background-color: #fff;
+	font-family: Microsoft Yahei;
+	font-size: 62.5%;
+	margin: 0;
+	padding: 0;
+}
+.container {
+	margin: 0 auto;
+	max-width: 100%;
+	font-size: 2rem;
+}
+
+/*文章页部分开始*/
+.title,.article-img {
+	text-align: center;
+}
+.publish-time span,.article-source span {
+	color: #a5a5a5;
+}
+.article {
+	margin: 3.2rem 3%;
+	font-size: 2.5rem;
+}
+.article-img {
+	margin: 3.2rem 0;
+	font-size: 1rem;
+}
+.article-img img {
+	display: block;
+	width: 100%;
+}
+.article img{
+	max-width: 100%;
+}
+/*文章页部分结束*/
+
+/*目录列表页开始*/
+.foot-navbar {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 9.6rem;
+	background-color: #004171;
+	position: fixed;
+	bottom: 0;
+	font-size: 3.2rem;
+	text-align: center;
+	z-index: 1;
+}
+.foot-navbar a {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	line-height: 9rem;
+}
+.foot-active {
+	border-bottom: .4rem solid #fff;
+}
+.foot-navbar span {
+	color: #fff;
+	margin: 0 1rem;
+}
+.inner {
+	overflow: scroll;
+	padding-bottom: 5rem;
+}
+.catalog {
+	font-size: 3.2rem;
+	padding: 0;
+	margin: 0 0 1rem 0;
+}
+.catalog a {
+	display:block;
+	position: relative;
+	background: #fff url(../images/arrow.png) no-repeat 94% 50%;
+	background-size: 1.4rem;
+	border-top: .16rem solid #bababa;
+	border-bottom: .1rem solid #bababa;
+	padding: 2rem 7rem 2rem 5rem;
+	text-decoration: none;
+	color: black;
+}
+a.active-catalog {
+	background-color: #f0f0f0;
+}
+.catalog-li-link {
+	text-decoration: none;
+	color: black;
+}
+span.select-button {
+	display: block;
+	position: absolute;
+  top: 45%;
+  right: 1.6rem;
+	color: #7e7e7e;
+	width: 3.2rem;
+	height: 3.2rem;
+	border-radius: 3.2rem;
+	border: .2rem solid #bababa;
+	text-align: center;
+  line-height: 3rem;
+  background-color: #fff;
+}
+.title-circle {
+	position: absolute;
+	top: 1rem;
+	left: 2rem;
+	font-size: 3.2rem;
+	margin-right: 3.2rem;
+	color: #7a7a7a;
+}
+.policy-title,.policy-message {
+	display:inline-block; 
+	margin: 0;
+	line-height: 4rem;
+}
+.policy-message {
+	margin-left: 3.2rem;
+  font-size: 2.6rem;
+}
+.page-type {
+	width: 100%;
+	margin-bottom: -1.2rem;
+}
+/*目录列表页结束*/
+
+/*上拉刷新*/
+.dropload-up,.dropload-down{position:relative;height:-3rem;overflow:hidden;font-size: 5rem;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.dropload-refresh,.dropload-update,.dropload-load{position:absolute;left:50%;bottom:0;width:100%;height:50px;line-height:75px;text-align:center;-webkit-transform:translate(-50%,0);transform:translate(-50%,0)}.dropload-down .dropload-refresh,.dropload-down .dropload-update,.dropload-down .dropload-load{top:0;bottom:auto}.dropload-load .loading{display:inline-block;height:15px;width:15px;border-radius:100%;margin:6px;border:2px solid #666;border-bottom-color:transparent;vertical-align:middle;-webkit-animation:rotate .75s linear infinite;animation:rotate .75s linear infinite}@-webkit-keyframes rotate{0%{-webkit-transform:rotate(0deg)}50%{-webkit-transform:rotate(180deg)}100%{-webkit-transform:rotate(360deg)}}@keyframes rotate{0%{transform:rotate(0deg)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+/*建设中页面*/
+.development-container {
+	margin-top: 16.2rem;
+	text-align: center;
+	font-size: 3.2rem;
+	color: #000;
+}
+.gear {
+	width: 15.8rem;
+	height: 16.4rem;
+}
+/* a.item:active {
+	background-color: #f0f0f0;
+} */

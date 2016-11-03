@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>请求超时</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+    <style>
+        .refresh_try {
+            display: block;
+            margin: 100px auto 0;
+            display: block;
+            width: 150px;
+            height: 35px;
+            color: #014171;
+            text-indent: 1em;
+            letter-spacing: 1em;
+            border: 2px solid #014171;
+            border-radius: 2px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+	<i class="icon_lock"></i>
+	<p class="text_lock">抱歉，出错了，请刷新。</p>
+    <button class="refresh_try" id="refreshBtn">刷新重试</button>
+</body>
+<script src="${ctx}/static/js/zepto.min.js"></script>
+<script type="text/javascript">
+	$("#refreshBtn").bind('click',function(){
+		window.location.reload();
+	});
+</script>
+</html>

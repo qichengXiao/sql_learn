@@ -1,0 +1,741 @@
+/*index页面代码*/
+
+body{
+  padding:0;
+  margin:0;
+  background-color:#eee;
+}
+
+a{
+  color:#000;
+}
+
+.header{
+  width:100%;
+  height:auto;
+
+
+
+
+  display: block;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:10;
+}
+.head-up{
+  width:100%;
+  height: 210px;
+  background-image:url(../images/contest/head-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  position: relative;
+}
+/*.head-up-one{
+  margin:0 auto;
+
+  width:70px;
+  height:70px;
+  background-image:url(../images/contest/contest/contest/head-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+}
+.head-up-two{
+  margin:5px 20px;
+  font-size:20px;
+  color:#fff;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+
+}
+.head-up-three{
+  margin:5px 20px;
+  font-size:16px;
+  color:#fff;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+
+}*/
+
+.head-up-four{
+  text-align: center;
+  margin:0px auto;
+  margin-bottom:5px;
+  position: absolute;
+  left: 50%;
+bottom: 20%;
+margin-left: -44px;
+
+}
+
+.head-up-four button{
+  font-size:14px;
+  padding: 3px 0px;
+  padding-left: 6px;
+  padding-right: 10px;
+  background-color: orange;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+
+}
+.head-up-four button:hover{
+  cursor: pointer;
+}
+.head-up-four .four-span{
+  display: inline-block;
+  background-image: url(../images/contest/arrow_right.png);
+  height:12px;
+  width:12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+      margin-right: 4px;
+      vertical-align: middle;
+}
+.head-up-five{
+  font-size:8px;
+  text-align: center;
+  white-space: nowrap;
+  margin:5px 20px;
+  color:#921806;
+  position: absolute;
+  left: 50%;
+bottom: 12%;
+margin-left: -114px;
+}
+
+/*.head-up-six{
+  text-align: center;
+  margin:5px 20px;
+  color:#fff;
+}
+.head-up-six p {
+  font-size:1px;
+  line-height: 14px;
+
+}*/
+section.content {
+  padding: 0;
+}
+.fn {
+  position: relative;
+  float: left;
+  padding-top: 30px;
+  padding-bottom:30px;
+  box-sizing: border-box;
+  width: 33.33%;
+  /*border-right: 1px solid #eee;*/
+  background: #fff;
+  text-align: center;
+}
+.fn:after {
+  content: "|";
+  display: block;
+  margin-top: -25px;
+  width: 1px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: transparent;
+  background: #eee;
+}
+
+.fn img {
+  width: 60%;
+}
+
+.fn span {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.head-down{
+  padding:5px 10px;
+  background-color:#fff;
+  text-align: center;
+  position: relative;
+  height:40px;
+}
+
+.head-down input{
+  background-color: #eee;
+  height: 37px;
+  size: 8px;
+  width: 90%;
+  padding-left: 25px;
+  outline-color: rgba(53, 163, 212, 0.9);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight:bold;
+}
+.head-down .search-span{
+
+    height: 16px;
+    display: inline-block;
+    width: 16px;
+    position: absolute;
+    left: 6%;
+    top: 16px;
+    background-image: url(../images/contest/head-3.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+.content{
+  padding: 10px 10px;
+  margin-top:210px;
+}
+.content .content-div{
+  margin-bottom:5px;
+  height:80px;
+  background-color:#fff;
+  border-radius: 3px;
+  position: relative;
+}
+.content .content-div .div-left{
+  display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-top: 10px;
+    vertical-align: top;
+    border-radius: 50%;
+    background-color: rgba(76, 230, 112, 0.91);
+
+}
+.content .content-div .div-left .div-left-img{
+  width:50px;
+  height:50px;
+  margin-left:5px;
+  margin-top:5px;
+  background-image: url(../images/contest/dianzi.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+}
+.content .content-div .div-left .xincailiao{
+  background-image: url(../images/contest/ic_xincailiao.png);
+}
+.content .content-div .div-left .shengwuyiyao{
+  background-image: url(../images/contest/ic_shengwuyiyao.png);
+}
+.content .content-div .div-left .dianzixinxi{
+  background-image: url(../images/contest/ic_dianzixinxi.png);
+}
+.content .content-div .div-left .xinnengyuan{
+  background-image: url(../images/contest/ic_xinnengyuan.png);
+}
+.content .content-div .div-left .xianjinzhizao{
+  background-image: url(../images/contest/ic_xianjinzhizao.png);
+}
+.content .content-div .div-left .hulianwang{
+  background-image: url(../images/contest/ic_hulianwang.png);
+}
+.content .content-div .div-middle{
+  display: inline-block;
+  text-align:left;
+  vertical-align: top;
+  padding-top: 12px;
+  font-size:18px;
+  font-weight: bold;
+
+  word-break: keep-all;
+}
+.content .content-div .div-right{
+  display: inline-block;
+  vertical-align: top;
+    overflow: hidden;
+    cursor: pointer;
+    width:30px;
+    height:30px;
+    background-image: url(../images/contest/arrow_right.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    position: absolute;
+    right:30px;
+    bottom:25px;
+}
+
+
+
+
+
+
+/*队伍列表代码*/
+
+.header .head-nav{
+  height: 50px;
+    line-height: 50px;
+    background-color: #67DC8D;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+.header .head-nav .head-nav-span{
+  height: 20px;
+  display: inline-block;
+  width: 20px;
+  position: absolute;
+  left: 5%;
+    top: 2px;
+
+}
+.header .head-nav .head-nav-span img{
+  height:auto;
+  width:auto;
+  max-height:100%;
+  max-width:100%;
+  /*transform: rotate(180deg);*/
+}
+
+.header .head-down-img{
+  width:100%;
+  height:150px;
+  background-image:url(../images/contest/team-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+}
+
+.content-teamlist{
+  margin-top:250px;
+}
+.content-newslist{
+  
+}
+
+.news-header {
+	 background: #fff;
+	 text-align: center;
+	 line-height: 1;
+	 height: 42px;
+     line-height: 42px;
+}
+.news-header img {
+	float: left;
+	margin-left: 33%;
+	margin-top: 5px;
+	width: 10%;
+	vertical-align:text-bottom;
+}
+
+.news-header p {
+	float: left;
+	margin: 0;
+	text-indent: 5px;
+}
+
+.content .content-div .teamlist-div-left{
+  display: inline-block;
+  width:80px;
+  height:60px;
+  margin-top:10px;
+  margin-left:10px;
+  border-radius: 3px;
+}
+.content .content-div .newslist-div-left{
+  display: inline-block;
+  width:80px;
+  height:60px;
+  margin-top:10px;
+  margin-left:10px;
+  border-radius: 3px;
+}
+.content .content-div .teamlist-div-left img{
+  width:80px;
+  height:60px;
+  border-radius: 3px;
+}
+
+.content .content-div .newslist-div-left img{
+  width:80px;
+  height:60px;
+  border-radius: 3px;
+}
+
+
+.content .content-div .div-middle-teamlist{
+    padding-top:20px;
+    display: inline-block;
+    max-width: 50%;
+}
+
+.content .content-div .div-middle-newslist{
+    padding-top:20px;
+    display: inline-block;
+    max-width: 50%;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+.content .content-div .div-middle-teamlist .teamlist-p{
+  line-height: 20px;
+	font-size: 16px;
+	height: 20px;
+	font-weight: bold;
+}
+.content .content-div .div-middle-teamlist .newslist-p{
+  	line-height: 20px;
+	font-size: 16px;
+	width: 200px;
+	height: 20px;
+	font-weight: bold;
+}
+.content .content-div .div-middle-newslist .newslist-p {
+	line-height: 20px;
+	font-size: 16px;
+	width: 150%;
+	height: 20px;
+	font-weight: bold;
+	text-indent: 10px;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.content .content-div .div-middle-teamlist .teamlist-p-down{
+  line-height: 20px;
+font-size: 8px;
+height: 20px;
+color:#F4C82F;
+word-wrap: break-word;
+word-break: break-all;
+}
+
+
+/*队伍详情列表代码*/
+.header .detail-top{
+  background-color:#fff;
+  height:60px;
+}
+
+.header .detail-top .head-div{
+  height:60px;
+  line-height:60px;
+  display: inline-block;
+  vertical-align: top;
+}
+.header .detail-top .left{
+  width:20%;
+      margin-left: -3px;
+      border-radius: 50%;
+      text-align: center;
+      padding-top: 10px;
+}
+.header .detail-top .left .div-img{
+  width:40px;
+  height:40px;
+
+  margin:0 auto;
+}
+.header .detail-top .left .div-img img{
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  border-radius: 50%;
+}
+.header .detail-top .middle{
+  width:30%;
+  color:#000;
+  text-align: left;
+  margin-left: -14px;
+    font-size: 16px;
+}
+.header .detail-top .middle-right{
+  width:20%;
+  color:#000;
+  text-align: center;
+  white-space: nowrap;
+
+  /*overflow: hidden;*/
+  font-size: 16px;
+}
+.header .detail-top .middle-right .team-detail-span{
+  display: inline-block;
+  width:20px;
+  height:20px;
+  margin-left:5px;
+  /*background-image:url(../images/contest/zan-1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;*/
+
+}
+.header .detail-top .middle-right .team-detail-span img{
+  width:auto;
+  height:auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.header .detail-top .right{
+  width:25%;
+
+}
+
+.header .detail-top .right button{
+  font-size:14px;
+  padding: 10px 10px;
+  background-color: rgba(41, 207, 80, 0.91);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+      color: #fff;
+}
+.content-teamdetail{
+  margin-top:60px;
+}
+.content-teamdetail .content-text .title{
+  font-size: 26px;
+font-weight: bold;
+text-align: center;
+}
+
+.content-teamdetail .content-text .text{
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size: 15px;
+    font-weight: bold;
+    line-height: 19px;
+}
+
+.content-teamdetail .content-div .div-detail{
+  padding-bottom:50px;
+}
+
+.content-teamdetail .content-div .div-detail .div-detail-img{
+  height:200px;
+  with:100%;
+  border-radius: 5px;
+  margin-bottom:10px;
+}
+.content-teamdetail .content-div .div-detail .div-detail-img img{
+  width:100%;
+  height:200px;
+  border-radius: 5px;
+}
+.content-teamdetail .content-div .div-detail .audio-div{
+  position: relative;
+}
+.content-teamdetail .content-div .div-detail .audio-div .img-1{
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:100;
+}
+.content-teamdetail .content-div .div-detail .audio-div .img-2{
+  width:auto;
+  height:auto;
+  max-width: 30%;
+  max-height:30%;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-top:-30px;
+  margin-left:-30px;
+  z-index:101;
+}
+
+.content-teamdetail .content-div .div-detail .div-detail-zan{
+  height:53px;
+  margin:20px auto;
+  margin-bottom:73px;
+  text-align: center;
+  color:#fff;
+}
+.content-teamdetail .content-div .div-detail .div-detail-zan button{
+  font-size: 25px;
+padding: 12px 20px;
+background-color: rgba(41, 207, 80, 0.91);
+border: none;
+outline: none;
+border-radius: 28px;
+    color: #fff;
+}
+
+.footer-fix{
+  width:100%;
+  position: fixed;
+  bottom:0;
+  left:0;
+  height:50px;
+  background-color:#fff;
+  z-index:10;
+}
+
+.footer-fix .footer-div{
+  display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 50px;
+    margin-top: 5px;
+    text-align: center;
+    position: absolute;;
+
+}
+.footer-fix .footer-div img{
+  width:auto;
+  height:auto;
+  max-height:100%;
+  max-width:100%;
+
+}
+.footer-fix .left{
+  left:20px;
+  bottom:5px;
+}
+.footer-fix  .right{
+  right:20px;
+  bottom:5px;
+}
+
+.footer-fix  .right img{
+
+}
+
+.footer-fix  .middle{
+  right:25%;
+  bottom:5px;
+}
+.footer-fix .middle img{
+  width:auto;
+  height:auto;
+  max-height:100%;
+  max-width:100%;
+}
+
+/*.footer-fix .footer-left .footer-left-img{
+  width:100%;
+  height:100%;
+  border-radius: 50%;
+  background-image:url(../images/contest/head-2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+}*/
+
+/*评论区域代码*/
+
+.comment .no-comment{
+  margin: 5px auto;
+width: 100px;
+height: 25px;
+text-align: center;
+vertical-align: middle;
+background-color: #BFBFBF;
+color: #fff;
+padding-top: 6px;
+border-radius: 3px;
+}
+
+.footer-fix .comment-left{
+  display: inline-block;
+  width:60%;
+  height:50px;
+  line-height: 50px;
+      padding-left: 20px;
+
+}
+.footer-fix .comment-left input{
+  background-color: #eee;
+  height: 37px;
+  size: 8px;
+  width: 90%;
+  padding-left: 25px;
+  /*outline-color: rgba(53, 163, 212, 0.9);*/
+  outline: none;
+  border: none;
+  border-radius: 20px;
+
+  font-size: 16px;
+  font-weight:bold;
+}
+.footer-fix .comment-right{
+  position: absolute;
+  right:10px;
+  display: inline-block;
+  height:50px;
+  line-height: 50px;
+}
+.footer-fix .comment-right button{
+  font-size: 15px;
+font-weight: bold;
+padding: 10px 20px;
+background-color: rgba(215, 178, 55, 0.91);
+border: none;
+outline: none;
+border-radius: 28px;
+color: #fff;
+}
+.comment .comments-div .comment-div .comment-header{
+
+}
+/*
+.comment .comments-div .comment-div .comment-header .header-avatar{
+  display: inline-block;
+  width:50px;
+  height:50px;
+  /*background-image:url(../images/contest/head-5.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  border-radius: 50%;
+}
+*/
+.comment .comments-div .comment-div .comment-header .header-avatar img{
+  display: inline-block;
+  width:50px;
+  height:50px;
+  /*background-image:url(../images/contest/head-5.png);*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  border-radius: 50%;
+}
+
+
+.comment .comments-div .comment-div .comment-header .header-name{
+  display: inline-block;
+    width: 60%;
+    height: 50px;
+    text-align: left;
+    line-height: 50px;
+    vertical-align: top;
+    font-size: 20px;
+    font-weight: bold;
+    color: #E68D42;
+    white-space: nowrap;
+    padding-left: 5px;
+}
+.comment .comments-div .comment-div .comment-text{
+  padding-left: 63px;
+    padding-right: 2px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 19px;
+}
+.search_btn {
+	display: block;
+    margin: 2px auto 0;
+    width: 100%;
+    height: 35px;
+    color: rgba(0, 0, 0, 0.99);
+    text-indent: 1em;
+    letter-spacing: 1em;
+    border: 2px solid #c1c1c1;
+    border-radius: 2px;
+    background-color: #f0f0f0;
+}

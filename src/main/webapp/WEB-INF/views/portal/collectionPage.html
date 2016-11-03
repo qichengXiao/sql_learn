@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="decorator" content="default" />
+<title>微信归集页面</title>
+</head>
+
+<body>
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				微信群发消息列表
+			</h1>
+		</div>
+		<!-- /.page-header -->
+
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+				<form class="form-inline" action="${ctx}/portal/collection/searchNews?pageid=1"
+					method="post">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12">
+							<div class="input-group">
+								<button class="btn btn-sm btn-purple" data-toggle="modal"
+									onclick="refresh()" data-target="#siteInfo-add-modal">
+									<i class="icon-edit bigger-120"></i>添加最新图文消息
+								</button>
+								标题：<input name="title" value="${siteInfo.title}"
+									type="text" class="input-small" style="width: 200px;"/>
+								分类：<select name="channel" class="input-small" style="width:150px;" value="${siteInfo.channel}">
+			  						<option value="wei_xin"></option>
+			  						<option value="zheng_wu_dong_tai" <#if siteInfo.channel == 'zheng_wu_dong_tai'> selected = "selected" </#if>>政务动态</option>
+			  						<option value="tong_zhi_gong_gao" <#if siteInfo.channel == 'tong_zhi_gong_gao'> selected = "selected" </#if>>通知公告</option>
+			  						<option value="zheng_ce_jie_du" <#if siteInfo.channel == 'zheng_ce_jie_du'> selected = "selected" </#if>>政策解读</option>
+			  						<option value="zheng_ce_fa_gui" <#if siteInfo.channel == 'zheng_ce_fa_gui'> selected = "selected" </#if>>政策法规</option>
+			  						<option value="gou_jia_zheng_ce_fa_gui" <#if siteInfo.channel == 'gou_jia_zheng_ce_fa_gui'> selected = "selected" </#if>>国家政策法规</option>
+			  						<option value="bu_men_gui_fang" <#if siteInfo.channel == 'bu_men_gui_fang'> selected = "selected" </#if>>部门规范</option>
+			  						<option value="wei_hu_dong" <#if siteInfo.channel == 'wei_hu_dong'> selected = "selected" </#if>>微互动</option>
+			  						<option value="xuan_ke_ji" <#if siteInfo.channel == 'xuan_ke_ji'> selected = "selected" </#if>>炫科技</option>
+			  						<option value="dong_zheng_ce" <#if siteInfo.channel == 'dong_zheng_ce'> selected = "selected" </#if>>懂政策</option>
+			  						<option value="chuang_xin_chuang_ye_hua_xu" <#if siteInfo.channel == 'chuang_xin_chuang_ye_hua_xu'> selected = "selected" </#if>>创新创业花絮</option>
+			  					</select > &nbsp;
+								<button type="submit" class="btn btn-purple btn-sm">
+									查询 <i class="icon-search icon-on-right bigger-110"></i>
+								</button><br>
+							</div>
+						</div>
+					</div>
+				</form>
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="table-responsive" style="margin-top: 5px">
+							<table id="sample-table-1"
+								class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<!-- <th class="center"><label> <input type="checkbox"
+												class="ace" /> <span class="lbl"></span>
+										</label></th> -->
+										<th style="text-align:center;width:200px;">&nbsp;&nbsp;&nbsp;标&nbsp;题&nbsp;&nbsp;&nbsp;</th>
+										<th style="width:80px;"></th>	
+										<th style="width:80px;"></th>
+									</tr>
+								</thead>
+
+								<tbody>
+									 <#list siteInfoList as siteInfo> 
+									<tr>
+										<!-- <td class="center"><label> <input type="checkbox"
+												class="ace" /> <span class="lbl"></span>
+										</label></td> -->
+										<td>${siteInfo.title}</td>
+										<td>
+											<select name="editChannel" id="editChannel${siteInfo.id}" style="width:150px;"
+													 class="input-small" >
+			  									<option value="wei_xin"></option>
+			  									<option value="zheng_wu_dong_tai" <#if siteInfo.channel == 'zheng_wu_dong_tai'> selected = "selected" </#if>>政务动态</option>
+			  									<option value="tong_zhi_gong_gao" <#if siteInfo.channel == 'tong_zhi_gong_gao'> selected = "selected" </#if>>通知公告</option>
+			  									<option value="zheng_ce_jie_du" <#if siteInfo.channel == 'zheng_ce_jie_du'> selected = "selected" </#if>>政策解读</option>
+			  									<option value="zheng_ce_fa_gui" <#if siteInfo.channel == 'zheng_ce_fa_gui'> selected = "selected" </#if>>政策法规</option>
+			  									<option value="gou_jia_zheng_ce_fa_gui" <#if siteInfo.channel == 'gou_jia_zheng_ce_fa_gui'> selected = "selected" </#if>>国家政策法规</option>
+			  									<option value="bu_men_gui_fang" <#if siteInfo.channel == 'bu_men_gui_fang'> selected = "selected" </#if>>部门规范</option>
+			  									<option value="wei_hu_dong" <#if siteInfo.channel == 'wei_hu_dong'> selected = "selected" </#if>>微互动</option>
+			  									<option value="xuan_ke_ji" <#if siteInfo.channel == 'xuan_ke_ji'> selected = "selected" </#if>>炫科技</option>
+			  									<option value="dong_zheng_ce" <#if siteInfo.channel == 'dong_zheng_ce'> selected = "selected" </#if>>懂政策</option>
+			  									<option value="chuang_xin_chuang_ye_hua_xu" <#if siteInfo.channel == 'chuang_xin_chuang_ye_hua_xu'> selected = "selected" </#if>>创新创业花絮</option>
+			  								</select > &nbsp;
+			  							<button class="btn btn-sm btn-purple" data-rel="tooltip" 
+												target="_Blank" onclick="editChannel('${siteInfo.id}','${siteInfo.image}')">
+													<span> <i class="icon-edit bigger-120"></i>归集
+													</span>
+												</button>
+										</td>
+										<td>
+											<div
+												class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+												<a class="btn btn-sm btn-purple" data-rel="tooltip" 
+												target="_Blank" href="${siteInfo.url}">
+													<span> <i class="icon-edit bigger-120"></i>查看详情
+													</span>
+												</a>
+												<button class="btn btn-sm btn-danger"
+													onclick="deleteSiteInfo('${siteInfo.id}')"
+													data-rel="tooltip">
+													<span> <i class="icon-trash bigger-120"></i>删除
+													</span>
+												</button>
+											</div>
+										</td>
+									</tr>
+								 </#list>
+								</tbody>
+							</table>
+						</div>
+						<#include "/common/common_page.html">
+						<!-- /.table-responsive -->
+					</div>
+					<!-- /span -->
+				</div>
+				<!-- /row -->
+				
+				<!-- PAGE CONTENT ENDS -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.page-content -->
+
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-sm btn-inverse"> <i
+		class="icon-double-angle-up icon-only bigger-110"></i>
+	</a>
+
+	<!-- inline scripts related to this page -->
+	<script charset="utf-8"
+		src="${ctx}/static/kindeditor/kindeditor-min.js"></script>
+	<script charset="utf-8" src="${ctx}/static/kindeditor/zh_CN.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$.messager.model = {
+			ok : {
+				text : "确定",
+				classed : 'btn-info'
+			},
+			cancel : {
+				text : "取消",
+				classed : 'btn-error'
+			}
+		};
+	});
+	
+	function refresh(){
+		$.ajax({
+	        type:"GET", //请求方式
+	        url:"${ctx}/portal/collection/refresh",//请求路径
+	        async: false,
+	        cache: false, 
+	        dataType: 'json',
+	      	success:function(data){   
+	    	  	var json = eval(data);
+	    	  	if(json.code == 0) {
+	        		alert("连接失败，请检查网络！");
+	        	}
+	    	  	if(json.code == 1){
+	    	  		window.location.href="collectionPage?pageid=1";
+	    	 	} 
+	        },
+	      error: function(){
+	          alert("连接失败，请检查网络！");
+	      }
+	      });
+	}
+		function deleteSiteInfo(id) {
+			$.messager.confirm("删除", "确定要删除该问题吗？ ", function() {
+				 $.ajax({
+				        type:"POST", //请求方式
+				        url:"${ctx}/portal/collection/deleteSiteInfo",//请求路径
+				        data:{"id":id},
+				        cache: false, 
+				      success:function(data){   
+				    	  var json = eval(data);
+				    	  if(json.code == 0) {
+				        		alert("操作失败，请重新尝试");
+				        	}
+				    	  if(json.code == 1){
+				    		  $.messager.confirm("删除", "操作成功 ");
+				    		  window.location.href="collectionPage?pageid=1";
+				    	  }
+				       },
+				      error: function(){
+				          alert("连接失败，请检查网络!");
+				      }
+				      });
+			});
+		}
+		function editChannel(id,image) {
+			var channel = document.getElementById("editChannel"+id).value;
+				$.ajax({
+		        type:"POST", //请求方式
+		        url:"${ctx}/portal/collection/editChannel",//请求路径
+		        data:{"id":id,"channel":channel,"image":image},
+		        async: false,
+		        cache: false, 
+		        dataType: 'json',
+		      	success:function(data){   
+		    	  	var json = eval(data);
+		    	  	if(json.code == 0) {
+		        		alert("操作失败");
+		        	}
+		    	  	if(json.code == 1){
+		    	  		
+		    	 	}
+		    	  	window.location.href="collectionPage?pageid=1";
+		        },
+		      error: function(){
+		          alert("连接失败，请检查网络！");
+		      }
+		      });
+		}
+	</script>
+
+</body>
+</html>
