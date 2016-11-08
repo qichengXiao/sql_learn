@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="decorator" content="default" />
+<title>凯撒密码</title>
+</head>
+
+<body>
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>加密</h1>
+		</div>
+						<div class="modal-body overflow-visible">
+					<form class="form-inline"
+						action="${ctx}/caesar/encrypt"
+						id="encrypt-form" method="post">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="from-group">
+									<div class="input-group">
+										<label class="col-sm-3 control-label no-padding-right">密文:</label>
+										<div class="col-sm-8">
+											<input type="text" name="mingwen" class="col-xs-10 col-sm-10"
+												value="" required/>
+										</div>
+			
+										<label class="col-sm-3 control-label no-padding-right">口令(纯数字):</label>
+										<div class="col-sm-8">
+								
+											<input type="text" name="mingwen_num"
+												class="col-xs-10 col-sm-10" value="" required max="4" min="1"/>
+										</div>
+										
+										
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+						<div class="modal-footer">
+				
+					<button class="btn btn-sm" data-dismiss="modal"   id="saveButton" onclick="$('#encrypt-form').submit();">
+						<i class="icon-remove"></i> 加密
+					</button>
+				</div>
+					
+				</div>
+				
+				
+					<div class="space-30"></div>
+				<div class="page-header">
+			
+				
+				
+			<h1>解密</h1>
+		</div>
+						<div class="modal-body overflow-visible">
+						<form class="form-inline"
+						action="${ctx}/caesar/decrypt"
+						id="decrypt-form" method="post">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="from-group">
+									<div class="input-group">
+										<label class="col-sm-3 control-label no-padding-right">密文:</label>
+										<div class="col-sm-8">
+											<input type="text" name="miwen" class="col-xs-10 col-sm-10"
+												value="" required/>
+										</div>
+			
+										<label class="col-sm-3 control-label no-padding-right">口令(纯数字):</label>
+										<div class="col-sm-8">
+								
+											<input type="text" name="miwen_num"
+												class="col-xs-10 col-sm-10" value="" required max="4" min="1"/>
+										</div>
+										
+										
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+						<div class="modal-footer">
+				
+					<button class="btn btn-sm" data-dismiss="modal"   id="saveButton" onclick="$('#decrypt-form').submit();">
+						<i class="icon-remove"></i> 解密
+					</button>
+				</div>
+					
+				</div>
+			
+	</div>
+	<!-- inline scripts related to this page -->
+	
+
+	<script type="text/javascript">
+
+		$(function() {
+			$("#encrypt-form").validate();
+			$("#encrypt-form").bind(
+					'submit',
+					function() {
+						//校验表单
+						if (!$(this).valid()) {
+							return false;
+						}
+						ajaxSubmit(this, function(response) {
+							
+							response = $.parseJSON(response);
+							if (response.status == 1) {
+								alert("密文为："+response.data.password);
+							} else {
+
+								alert(response.errormsg);
+							};
+						});
+						return false;
+					});
+	});
+		$(function() {
+			$("#decrypt-form").validate();
+			$("#decrypt-form").bind(
+					'submit',
+					function() {
+						//校验表单
+						if (!$(this).valid()) {
+							return false;
+						}
+						ajaxSubmit(this, function(response) {
+							
+							response = $.parseJSON(response);
+							if (response.status == 1) {
+								alert("密文为："+response.data.password);
+							} else {
+
+								alert(response.errormsg);
+							};
+						});
+						return false;
+					});
+	});
+
+	</script>
+</body>
+</html>
