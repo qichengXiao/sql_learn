@@ -67,6 +67,22 @@ public class HillJuzhen {
 	public void setK33(int k33) {
 		K33 = k33;
 	}
+	public HillJuzhen(int k11, int k12, int k13, int k21, int k22, int k23,
+			int k31, int k32, int k33) {
+		super();
+		K11 = k11;
+		K12 = k12;
+		K13 = k13;
+		K21 = k21;
+		K22 = k22;
+		K23 = k23;
+		K31 = k31;
+		K32 = k32;
+		K33 = k33;
+	}
+	public HillJuzhen() {
+	
+	}
 	
 	
 }

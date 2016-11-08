@@ -94,22 +94,7 @@
 			<mvc:mapping path="/**" />
 			<bean class="com.cscw.web.interceptor.CommonInterceptor"></bean>
 		</mvc:interceptor>
-		
-		<mvc:interceptor>
-			<mvc:mapping path="/portal/**" />
-			<mvc:exclude-mapping path="/portal/login"/>  
-			
-			<bean class="com.cscw.web.interceptor.PortalInterceptor">
-				<property name="authoritysB" value="menu,homeUrl,item" />
-			
-			</bean>
-		</mvc:interceptor>
-		
-		<mvc:interceptor>
-			<mvc:mapping path="/replay/**" />
-			<mvc:exclude-mapping path="/login"/>  
-			<bean class="com.cscw.web.interceptor.PortalInterceptor"></bean>
-		</mvc:interceptor>
+
 		
 		
 

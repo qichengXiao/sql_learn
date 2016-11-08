@@ -45,7 +45,7 @@ import com.huisa.common.exception.ServiceException;
 public class CaesarController {
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String login(Model model) {
 		
 		return "password/caesar";
@@ -75,11 +75,12 @@ public class CaesarController {
 		char[] pArray = p.toLowerCase().toCharArray();
 		for(int i = 0 ;i<pArray.length;i++	){
 			int ci = (int)pArray[i] - 'a';
-			pArray[i]= (char) ((ci+num)%26) ;
+			pArray[i]= (char) ((ci+num)%26+'a') ;
 		}
 		JsonObject o = new JsonObject();
 		o.addProperty("password", new String(pArray));
 		ajaxdata = new AjaxData(true, o, null);
+		MVCUtil.ajaxJson(ajaxdata);
 	}
 	
 	@RequestMapping(value = "/decrypt")
@@ -104,11 +105,13 @@ public class CaesarController {
 		char[] pArray = p.toLowerCase().toCharArray();
 		for(int i = 0 ;i<pArray.length;i++	){
 			int ci = (int)pArray[i] - 'a';
-			pArray[i]= (char) ((ci-num)%26) ;
+			int t  =(ci-num+26)%26;
+			pArray[i]= (char) (t+'a') ;
 		}
 		JsonObject o = new JsonObject();
 		o.addProperty("password", new String(pArray));
 		ajaxdata = new AjaxData(true, o, null);
+		MVCUtil.ajaxJson(ajaxdata);
 	}
 
 	@Test

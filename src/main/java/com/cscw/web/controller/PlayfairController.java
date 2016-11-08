@@ -97,19 +97,21 @@ public class PlayfairController {
 		
 		JsonObject o = new JsonObject();
 		
-		StringBuffer	juzhenString = null ;
+		StringBuffer	juzhenString = new StringBuffer() ;
 		for(char chararray[] :juzhen){
 			for(char c :chararray){
 				juzhenString.append(c);
+				juzhenString.append(" ");
 			}
 			juzhenString.append("\n");
 		}
 		
 		
 		o.addProperty("mingwen", mingwen);
-		o.addProperty("juzhen", juzhenString.toString());
+		o.addProperty("juzhen", juzhenString.toString().toUpperCase());
 		o.addProperty("miwen",new String(miwen));
 		ajaxdata = new AjaxData(true, o, null);
+		MVCUtil.ajaxJson(ajaxdata);
 	}
 	
 	@RequestMapping(value = "/decrypt")
@@ -160,9 +162,10 @@ public class PlayfairController {
 
 		JsonObject o = new JsonObject();
 		
-		StringBuffer	juzhenString = null ;
+		StringBuffer	juzhenString = new StringBuffer() ;
 		for(char chararray[] :juzhen){
 			for(char c :chararray){
+				juzhenString.append(" ");
 				juzhenString.append(c);
 			}
 			juzhenString.append("\n");
@@ -173,6 +176,7 @@ public class PlayfairController {
 		o.addProperty("juzhen", juzhenString.toString());
 		o.addProperty("miwen",new String(miwen));
 		ajaxdata = new AjaxData(true, o, null);
+		MVCUtil.ajaxJson(ajaxdata);
 	}
 	private void fill( char[][] juzhen , char c,int num){
 		int i=0;
