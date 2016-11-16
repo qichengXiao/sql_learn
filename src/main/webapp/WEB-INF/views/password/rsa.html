@@ -8,12 +8,18 @@
 <body>
 
 	<div class="page-content">
+		<button class="btn btn-sm" data-dismiss="modal"   id="saveButton" onclick="refresh()">
+						<i class="icon"></i>刷新密钥
+			</button>
+	<div class="page-header">
+			<h1>参数p:${p},q:${q}&nbsp;&nbsp;&nbsp;&nbsp;公钥:{e:${e},n:${n}}&nbsp;&nbsp;&nbsp;&nbsp;  私钥:{d:${d},n:${n}}</h1>
+		</div>
 		<div class="page-header">
 			<h1>加密</h1>
 		</div>
 						<div class="modal-body overflow-visible">
 					<form class="form-inline"
-						action="${ctx}/playfair/encrypt"
+						action="${ctx}/rsa/encrypt"
 						id="encrypt-form" method="post">
 						<div class="row">
 							<div class="col-xs-12">
@@ -22,15 +28,22 @@
 									<div class="input-group">
 										<label class="col-sm-3 control-label no-padding-right">明文:</label>
 										<div class="col-sm-8">
-											<input type="text" name="mingwen" class="col-xs-10 col-sm-10"
+											<input type="text" name="mingwen" id="mingwen" class="col-xs-10 col-sm-10"
 												value="" required/>
 										</div>
 			
-										<label class="col-sm-3 control-label no-padding-right">关键词(8位):</label>
+										<label class="col-sm-3 control-label no-padding-right">公钥e:</label>
 										<div class="col-sm-8">
 								
-											<input type="text" name="keyword"
-												class="col-xs-10 col-sm-10" value="" required maxlength="8" />
+											<input type="text" name="e"
+												class="col-xs-10 col-sm-10" value="${e}" required maxlength="8" />
+										</div>
+										
+										<label class="col-sm-3 control-label no-padding-right">公钥n:</label>
+										<div class="col-sm-8">
+								
+											<input type="text" name="n"
+												class="col-xs-10 col-sm-10" value="${n}" required maxlength="8" />
 										</div>
 										
 										
@@ -59,7 +72,7 @@
 		</div>
 						<div class="modal-body overflow-visible">
 					<form class="form-inline"
-						action="${ctx}/playfair/decrypt"
+						action="${ctx}/rsa/decrypt"
 						id="decrypt-form" method="post">
 						<div class="row">
 							<div class="col-xs-12">
@@ -72,12 +85,20 @@
 												value="" required/>
 										</div>
 			
-										<label class="col-sm-3 control-label no-padding-right">关键词(8位):</label>
+										<label class="col-sm-3 control-label no-padding-right">私钥d:</label>
 										<div class="col-sm-8">
 								
-											<input type="text" name="keyword"
-												class="col-xs-10 col-sm-10" value="" required maxlength="8" />
+											<input type="text" name="d"
+												class="col-xs-10 col-sm-10" value="${d}" required maxlength="8" />
 										</div>
+										
+										<label class="col-sm-3 control-label no-padding-right">私钥n:</label>
+										<div class="col-sm-8">
+								
+											<input type="text" name="n"
+												class="col-xs-10 col-sm-10" value="${n}" required maxlength="8" />
+										</div>
+										
 										
 										
 
@@ -88,8 +109,8 @@
 					</form>
 						<div class="modal-footer">
 				
-					<button class="btn btn-sm" data-dismiss="modal"   id="saveButton" onclick="$('#decrypt-form').submit();">
-						<i class="icon-remove"></i> 解密
+					<button class="btn btn-sm" data-dismiss="modal"   id="saveButton2" onclick="$('#decrypt-form').submit();">
+						<i class="icon-remove"></i>  解密
 					</button>
 				</div>
 					
@@ -113,7 +134,7 @@
 							
 							response = $.parseJSON(response);
 							if (response.status == 1) {
-								alert("加密矩阵：\n"+response.data.juzhen+"\n密文为："+response.data.miwen);
+								alert("\n密文为："+response.data.miwen);
 								$("#miwen").val(response.data.miwen);
 							} else {
 
@@ -137,7 +158,7 @@
 							
 							response = $.parseJSON(response);
 							if (response.status == 1) {
-								alert("解密矩阵：\n"+response.data.juzhen+"\n明文为："+response.data.mingwen);
+								alert("\n明文文为："+response.data.mingwen);
 							} else {
 
 								alert(response.errormsg);
@@ -146,6 +167,14 @@
 						return false;
 					});
 	});
+
+	function refresh(id) {
+		
+			window.open("${ctx}/rsa/","_self");
+		
+	}
+	
+
 
 	</script>
 </body>

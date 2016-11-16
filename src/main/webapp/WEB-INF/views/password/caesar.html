@@ -68,7 +68,7 @@
 									<div class="input-group">
 										<label class="col-sm-3 control-label no-padding-right">密文:</label>
 										<div class="col-sm-8">
-											<input type="text" name="miwen" class="col-xs-10 col-sm-10"
+											<input type="text" name="miwen" id="miwen" class="col-xs-10 col-sm-10"
 												value="" required/>
 										</div>
 			
@@ -115,6 +115,7 @@
 							response = $.parseJSON(response);
 							if (response.status == 1) {
 								alert("密文为："+response.data.password);
+								$("#miwen").val(response.data.password);
 							} else {
 
 								alert(response.errormsg);
@@ -136,7 +137,8 @@
 							
 							response = $.parseJSON(response);
 							if (response.status == 1) {
-								alert("密文为："+response.data.password);
+								alert("明文为："+response.data.password);
+								
 							} else {
 
 								alert(response.errormsg);
