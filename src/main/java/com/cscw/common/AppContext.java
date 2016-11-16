@@ -64,15 +64,15 @@ public class AppContext {
 		imagepath = url;
 		
 		// 初始化
-		refreshConfig();
+		//refreshConfig();
 		// 定时器，更新系统配置
 		scheduler = Executors.newScheduledThreadPool(3);
 		scheduler.scheduleWithFixedDelay(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					sysconfigService.updateConfig();
-					AppContext.refreshConfig();
+			//	sysconfigService.updateConfig();
+			//		AppContext.refreshConfig();
 				} catch (Throwable e) {
 					logger.error("AppContext.scheduler faild!", e);
 				}
